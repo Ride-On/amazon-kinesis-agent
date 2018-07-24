@@ -33,7 +33,9 @@ ARGS=${ARGS:-}
 RETVAL=0
 
 # load any configs/environment from /etc/default/<name>
-[ -e /etc/default/$DAEMON_NAME ] && . /etc/default/$DAEMON_NAME
+set -a 
+[ -e /etc/environment ] && . /etc/environment
+set +a 
 
 # Export the settings
 do_start () {
